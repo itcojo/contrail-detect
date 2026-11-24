@@ -1,0 +1,171 @@
+### PROJECT ###
+
+.coverage
+.envrc
+Pipfile
+Pipfile.lock
+run.py
+TODO.txt
+assets/*.txt
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### Data ###
+# Do not keep any unexpected data entries
+contrail_detect/data/*
+!contrail_detect/data/geostationary_data/
+
+# Do not keep any CoCiP forecast/reanalysis data (but keep structure)
+contrail_detect/data/cocip_data/*
+!contrail_detect/data/cocip_data/.gitkeep
+
+# Do not keep any ECMWF forecast/reanalysis data (but keep structure)
+contrail_detect/data/ecmwf_data/*
+!contrail_detect/data/ecmwf_data/.gitkeep
+
+# Do not keep any satellite data
+contrail_detect/data/geostationary_data/*
+!contrail_detect/data/geostationary_data/mtg_summer_scantime.npz
+!contrail_detect/data/geostationary_data/mtg_winter_scantime.npz
+!contrail_detect/data/geostationary_data/abi_time_model_mode6a.npz
+
+# Do not keep any flight data
+contrail_detect/data/flight_data/*
+!contrail_detect/data/flight_data/test_flight_data.parquet
+
+# Do not keep any inference data (but keep structure)
+contrail_detect/data/inference_data/*
+!contrail_detect/data/inference_data/.gitkeep
+
+# Do not keep any processed contrail data (but keep structure)
+contrail_detect/data/processed_data/*
+!contrail_detect/data/processed_data/.gitkeep
+
+# Do not keep any tmp data (but keep structure)
+contrail_detect/data/tmp/*
+!contrail_detect/data/tmp/.gitkeep
+
+# Do not keep any data within kaggle temp directory
+contrail_detect/models/kaggle_contrails_solution/data/*
+!contrail_detect/models/kaggle_contrails_solution/data/.gitkeep
+
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### Examples & Tests ###
+examples/*
+!examples/goes_pipeline.ipynb
+!examples/himawari_pipeline.ipynb
+!examples/inference_demo.py
+!examples/mtg_pipeline.ipynb
+
+notebooks/*
+!notebooks/.gitkeep
+test_figures/*
+flight_data/*
+test_outputs/*
+trial_demos/*
+
+contrail_detect/decomposition/README.md
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### Figures ###
+# Do not keep any figures
+figures/*
+!figures/.gitkeep
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### Models Weights ###
+# Do not commit any model weights
+contrail_detect/models/kaggle_contrails_solution/input/weights
+contrail_detect/models/kaggle_contrails_solution/input/weights.zip
+!contrail_detect/models/kaggle_contrails_solution/input/weights/.gitkeep
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### OS-LINUX ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### OS-MAC ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### --- --- --- --- --- --- --- --- --- --- --- --- --- --- ###
+### PYTHON ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+#Pipfile.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+__pypackages__/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Other
+.vscode
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+*.egg-info/
+build/
+dist/
+
+CLAUDE.md
+.claude/*

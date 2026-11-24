@@ -1,0 +1,36 @@
+contrail-detect
+Copyright (c) 2026 Jonathan Itcovitz and Marek Travnik
+
+This product includes third-party software:
+
+Kaggle Contrails Solution
+  Location: contrail_detect/models/kaggle_contrails_solution/
+  Source:   https://www.kaggle.com/code/junkoda/contrails-submit
+  Copyright (c) 2023 Jun Koda
+  License:  MIT (see contrail_detect/models/kaggle_contrails_solution/LICENSE)
+  Changes:  Trimmed to the vit4 and unet1024 inference code. Added CPU inference,
+            weights_only model loading and compatibility with
+            segmentation-models-pytorch >= 0.5, read tiles from contrail-detect's data
+            directory, removed unused functions, and added docstrings and type hints.
+
+This product includes third-party data:
+
+MTG FCI scan-time tables (summer and winter)
+  Location: contrail_detect/data/geostationary_data/mtg_summer_scantime.npz,
+            contrail_detect/data/geostationary_data/mtg_winter_scantime.npz
+  Source:   Provided by Aaron Sarna, Google Research (private communication). Identical to
+            outputs from the Google Contrails API.
+
+ABI time-model look-up table (Mode 6A)
+  Location: contrail_detect/data/geostationary_data/abi_time_model_mode6a.npz
+  Source:   Carr, J.L.; Wu, D.L.; Daniels, J.; Friberg, M.D.; Bresky, W.; Madani, H.
+            GEO-GEO Stereo-Tracking of Atmospheric Motion Vectors (AMVs) from the
+            Geostationary Ring. Remote Sens. 2020, 12, 3779.
+            https://doi.org/10.3390/rs12223779, Supplementary Materials
+            (ABI_Time_Model_09042020). Also distributed by NOAA STAR as
+            https://www.star.nesdis.noaa.gov/GOESCal/docs/pdf/Tools/ABI-Time_Model_LUTS.tar.gz
+  File:     ABI-Timeline05B_Mode 6A_20190612-183017.nc (sha256
+            be2dcd3dc7f4efbe0c309f63a9166d4d77a00468ea68fd3106e08126d77d9501)
+  License:  The article is CC BY 4.0. The supplementary files state no licence.
+  Changes:  FD, CONUS1 and MESO tables transposed to (row, col) and saved as float32 in a
+            compressed .npz. CONUS2 dropped (identical to CONUS1).

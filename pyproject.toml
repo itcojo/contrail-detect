@@ -1,0 +1,159 @@
+[build-system]
+requires = ["setuptools>=77.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "contrail-detect"
+version = "1.13.1"
+description = "Models for contrail detection, tracking, and matching to flights from geostationary satellite imagery."
+authors = [
+    { name="Jonathan Itcovitz", email="jonathan.itcovitz@contrails.org" },
+    { name="Marek Travnik", email="marek.travnik22@imperial.ac.uk" },
+]
+license = "MIT"
+license-files = [
+    "LICENSE",
+    "NOTICE",
+    "contrail_detect/models/kaggle_contrails_solution/LICENSE",
+]
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = [
+    "contrails",
+    "aviation",
+    "climate",
+    "geostationary satellite",
+    "remote sensing",
+    "ADS-B",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+dependencies = [
+    # Core scientific stack
+    "numpy",
+    "pandas<4",
+    "scipy",
+    "xarray",
+    "zarr>=3",
+    
+    # Scientific computing and data manipulation
+    "cartopy",
+    "cdsapi",
+    "ephem",
+    "fastparquet",
+    "geopandas",
+    "h5netcdf",
+    "h5py",  # h5netcdf backend, no longer installed by h5netcdf itself
+    "joblib",
+    "matplotlib",
+    "netcdf4",
+    "networkx",
+    "Pillow",
+    "platformdirs",  # pycontrails cache, only installed by its optional extras
+    "plotly",
+    "pyarrow",
+    "pycontrails>=0.60.2,<0.64",  # tested on 0.60.2 and 0.63.5
+    "pyproj",
+    "python-dotenv",
+    "pyyaml",
+    "requests",
+    "scikit-image",
+    "seaborn",
+    "shapely",
+    "skan",
+    "tqdm",
+
+    # Satellite data access, used by pycontrails' datalibs: gcsfs for GOES (NOAA's public
+    # Google Cloud bucket) and s3fs for Himawari (AWS open data)
+    "gcsfs",
+    "s3fs",
+]
+
+[project.urls]
+Repository = "https://github.com/itcojo/contrail-detect"
+Changelog = "https://github.com/itcojo/contrail-detect/blob/main/CHANGELOG.md"
+Issues = "https://github.com/itcojo/contrail-detect/issues"
+
+[project.optional-dependencies]
+local = [
+    # Deep learning packages for LocalContrailModel (local inference)
+    "torch",
+    "torchvision",
+    "albumentations",
+    "efficientnet-pytorch>=0.7.1",
+    "segmentation-models-pytorch>=0.5.0",
+    "pretrainedmodels>=0.7.4",
+    "timm>=1.0.27",
+    "munch>=3.0.0",
+    "scikit-learn",
+]
+
+# Running the example notebooks
+examples = [
+    "ipykernel",
+    "ipywidgets",
+    "jupyterlab",
+]
+
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+all = [
+    "contrail-detect[local,examples]",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "integration: marks tests requiring external API credentials (skip with '-m not integration')",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = ["contrail_detect/models/kaggle_contrails_solution/"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = [
+    "E501",   # line too long — formatter enforces 100 on new code; existing long lines cleaned up gradually
+    "B008",   # do not perform function calls in default arguments — false-positives with dataclasses
+    "B905",   # zip() without explicit strict= — too prescriptive for scientific iteration code
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]   # assert is fine in tests (ruff doesn't select S by default, but future-proofs)
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["contrail_detect*"]
+exclude = ["tests*", "examples*", "figures*", "assets*"]
+
+# Non-Python files to ship in the wheel. Only these are included from contrail_detect/data/;
+# everything else there is local (caches and downloads). The vendored
+# Kaggle code's MIT licence must travel with that code.
+[tool.setuptools.package-data]
+contrail_detect = [
+    "data/geostationary_data/mtg_*_scantime.npz",
+    "data/geostationary_data/abi_time_model_mode6a.npz",
+    "models/kaggle_contrails_solution/LICENSE",
+]
+
+

@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "contrail-detect"
+abstract: "Contrail detection, decomposition, tracking, and flight attribution in geostationary satellite imagery."
+version: 1.13.1
+date-released: 2026-11-23
+license: MIT
+authors:
+  - family-names: Itcovitz
+    given-names: Jonathan
+    email: jonathan.itcovitz@contrails.org
+    affiliation: "Imperial College London and Contrails.org"
+  - family-names: Travnik
+    given-names: Marek
+    email: marek.travnik22@imperial.ac.uk
+    affiliation: Imperial College London
+repository-code: "https://github.com/itcojo/contrail-detect"
+
+# Update this entry when the paper is published (add doi, journal, year).
+preferred-citation:
+  type: article
+  title: "A Year of Contrails over the Americas: Observation Trends & Limits to Flight Attribution from Geostationary Satellites"
+  notes: "In preparation. Citation details will be updated upon publication."
+  authors:
+    - family-names: Itcovitz
+      given-names: Jonathan P.
+    - family-names: Travnik
+      given-names: Marek
+    - family-names: Meijer
+      given-names: Vincent R.
+    - family-names: Teoh
+      given-names: Roger
+    - family-names: Abbott
+      given-names: Tristan
+    - family-names: Eastham
+      given-names: Sebastian D.
+    - family-names: Stettler
+      given-names: Marc E. J.

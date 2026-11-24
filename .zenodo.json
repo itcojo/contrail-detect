@@ -1,0 +1,24 @@
+{
+  "license": "MIT",
+  "upload_type": "software",
+  "title": "contrail-detect: contrail detection, tracking and flight attribution in geostationary satellite imagery",
+  "description": "<p><strong>contrail-detect</strong> is a Python package for detecting aviation contrails in geostationary satellite imagery, decomposing the detections into individual contrails, tracking them across frames, and attributing them to the flights that formed them.</p>\n\n<p>It supports GOES-16/18/19, Himawari-8/9, and Meteosat Third Generation. Detections come from the Contrails.org API, the Google Contrails API, or a local U-Net and vision transformer model. Flights from ADS-B data are advected with ERA5 winds to each pixel's scan time and adjusted for parallax before being matched to contrail tracks.</p>\n\n<p>This record is a frozen snapshot of the code used for Itcovitz et al. (in prep.). It is not developed further here: the functionality is being integrated into the open-source <a href=\"https://py.contrails.org\">pycontrails</a> library, where future development will take place. See the <a href=\"https://github.com/itcojo/contrail-detect\">GitHub repository</a> for installation and examples.</p>",
+  "creators": [
+    {
+      "name": "Itcovitz, Jonathan",
+      "affiliation": "Imperial College London and Contrails.org"
+    },
+    {
+      "name": "Travnik, Marek",
+      "affiliation": "Imperial College London"
+    }
+  ],
+  "keywords": [
+    "contrails",
+    "aviation",
+    "climate",
+    "geostationary satellite",
+    "remote sensing",
+    "ADS-B"
+  ]
+}

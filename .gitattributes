@@ -1,0 +1,2 @@
+# Kept out of exported snapshots (git archive), such as the public release
+.gitattributes export-ignore
